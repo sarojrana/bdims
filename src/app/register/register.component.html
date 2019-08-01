@@ -1,0 +1,139 @@
+<div class="container">
+  <form [formGroup]="userForm" (submit)="register()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">
+            First Name *
+            <span class="error" *ngIf="form.firstName.invalid && form.firstName.dirty">
+              <span *ngIf="form.firstName.errors.required">
+                first name required
+              </span>
+              <span *ngIf="form.firstName.errors.pattern">
+                first name should contain alphabets only
+              </span>
+            </span>
+        </label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">
+            Last Name *
+            <span class="error" *ngIf="form.lastName.invalid && form.lastName.dirty">
+              <span *ngIf="form.lastName.errors.required">
+                last name required
+              </span>
+              <span *ngIf="form.lastName.errors.pattern">
+                last name should contain alphabets only
+              </span>
+            </span>
+        </label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Second Name" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email *
+            <span class="error" *ngIf="form.email.invalid && form.email.dirty">
+              email required
+            </span>
+        </label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password">Password *
+            <span class="error" *ngIf="form.password.invalid && form.password.dirty">
+              password required
+            </span>
+        </label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="mobile">Mobile *
+            <span class="error" *ngIf="form.mobile.invalid && form.mobile.dirty">
+              mobile required
+            </span>
+        </label>
+        <input type="text" formControlName="mobile" id="mobile" maxlength="10" class="form-control" required />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="province">Province *
+            <span class="error" *ngIf="form.province.invalid && form.province.dirty">
+              province required
+            </span>
+        </label>
+        <select id="province" class="form-control" formControlName="province" (change)="fetchDistricts(form.province.value)" required>
+          <option value="">--select--</option>
+          <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="district">District *
+          <span class="error" *ngIf="form.addressId.invalid && form.addressId.dirty">
+            district required
+          </span>
+        </label>
+        <select id="district" class="form-control" formControlName="addressId" required>
+          <option value="">--select--</option>
+          <option *ngFor="let item of districts" value="{{item?._id}}">{{item?.district}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="dob">Date of Birth *
+            <span class="error" *ngIf="form.dob.invalid && form.dob.dirty">
+              date of birth required
+            </span>
+        </label>
+        <input type="date" formControlName="dob" id="dob" class="form-control" required/>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="gender">Gender *
+          <span class="error" *ngIf="form.gender.invalid && form.gender.dirty">
+            gender required
+          </span></label>
+        <select formControlName="gender" id="gender" class="form-control">
+          <option value="">--select--</option>
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+          <option value="OTHER">OTHER</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="bloodGroup">Blood Group *
+            <span class="error" *ngIf="form.bloodGroup.invalid && form.gender.dirty">
+              blood group required
+            </span></label>
+        <select formControlName="bloodGroup" id="bloodGroup" class="form-control" required>
+          <option value="">--select--</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="userType">Become a Donor or General Member?</label>
+        <select formControlName="role" id="userType" class="form-control" required>
+          <option value="">--select--</option>
+          <option value="MEMBER">Register as a General Member</option>
+          <option value="DONOR">Register as a Donor</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="docImage">Photo of valid National Identity Document</label>
+        <input type="file" name="image" id="docImage" class="form-control" 
+          accept="image/x-png,image/gif,image/jpeg" (change)="handleFile($event)" />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
