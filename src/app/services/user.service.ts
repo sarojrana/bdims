@@ -98,4 +98,11 @@ export class UserService {
   approveBloodRequest(id) {
     return this.http.post<any>(this.apiUrl + '/approveBloodRequest/' + id, {});
   }
+
+  /**
+   * get statistcs
+   */
+  getStatistics() {
+    return this.http.get<any>(config.serverApiUrl + 'users/statistics');
+  }
 }

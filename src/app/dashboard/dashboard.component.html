@@ -6,10 +6,49 @@
     <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
       <div class="card my-1">
         <div class="card-body">
-          <h5 class="card-title text-center">Dashboard</h5>
-          <form>
-  
-          </form>
+          <h4 *ngIf="!stats"> Statistics will be available soon...</h4>
+          <div class="row" *ngIf="stats">
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <div class="row">
+                <div class="col-4">
+                  <div class="numberCircle">{{stats?.donors}}</div>
+                </div>
+                <div class="col-8">
+                  <div class="circle-label">Donors</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="row">
+                <div class="col-4">
+                  <div class="numberCircle">{{stats?.members}}</div>
+                </div>
+                <div class="col-8">
+                  <div class="circle-label">Members</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="row">
+                <div class="col-4">
+                  <div class="numberCircle">{{stats?.donations}}</div>
+                </div>
+                <div class="col-8">
+                  <div class="circle-label">Donations</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="row">
+                <div class="col-4">
+                  <div class="numberCircle">{{stats?.donors}}</div>
+                </div>
+                <div class="col-8">
+                  <div class="circle-label">Blood Request</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
