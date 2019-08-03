@@ -22,7 +22,7 @@
               <th scope="row">{{i+1}}</th>
               <td>{{bloodRequest?.addressId.province}}, {{bloodRequest?.addressId.district}}</td>
               <td>{{bloodRequest?.bloodGroup}}</td>
-              <td>{{bloodRequest?.date | date: 'yyyy-MM-dd'}}</td>
+              <td>{{bloodRequest?.date | date: 'yyyy-MM-dd hh:mm aa'}}</td>
               <td>
                 {{bloodRequest?.userId?.firstName}} {{bloodRequest?.userId?.lastName}}
                 ({{bloodRequest?.userId?.mobile}})

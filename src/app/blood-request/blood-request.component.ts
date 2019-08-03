@@ -66,6 +66,7 @@ export class BloodRequestComponent implements OnInit {
         Swal.fire('Success', response.message, 'success');
         this.requestForm.reset();
         this.requestForm.markAsUntouched();
+        this.getBloodRequests();
       }else{
         Swal.fire('Sorry', response.message, 'error');
       }

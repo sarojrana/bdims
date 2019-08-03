@@ -4,6 +4,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { AddressService } from '../services/address.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -21,10 +22,18 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private authService: AuthService,
     private addressService: AddressService
   ) { }
 
   ngOnInit() {
+    if(this.authService.isUserAuthenticated()){
+      if(this.authService.isUserAdmin()){
+        this.router.navigate(['/user-list']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    }
     this.prepareUserForm();
     this.fetchProvince();
   }

@@ -10,18 +10,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BloodRequestComponent } from './blood-request/blood-request.component';
 import { BloodDonationComponent } from './blood-donation/blood-donation.component';
 import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
+import { AuthGuard, AdminGuard } from './auth-guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'registration', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'blood-request', component: BloodRequestComponent },
-  { path: 'blood-donation', component: BloodDonationComponent },
-  { path: 'user-list', component: UserListComponent },
-  { path: 'user-register', component: UserRegisterComponent },
-  { path: 'user-edit/:id', component: UserEditComponent },
-  { path: 'manage-blood-request', component: ManageBloodRequestComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'blood-request', component: BloodRequestComponent, canActivate: [AuthGuard] },
+  { path: 'blood-donation', component: BloodDonationComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'manage-blood-request', component: ManageBloodRequestComponent, canActivate: [AuthGuard, AdminGuard] }
 ];
 
 @NgModule({

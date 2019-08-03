@@ -20,6 +20,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if(this.authService.isUserAuthenticated()){
+      if(this.authService.isUserAdmin()){
+        this.router.navigate(['/user-list']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    }
     this.prepareLoginForm();
   }
 

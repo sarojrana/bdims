@@ -34,12 +34,12 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="date">Date of blood needed *
+                <label for="date">Date and Time of blood needed *
                   <span class="error" *ngIf="form.date.invalid && form.date.dirty">
                     date required
                   </span>
                 </label>
-                <input type="date" formControlName="date" id="date" class="form-control" required />
+                <input type="datetime-local" formControlName="date" id="date" class="form-control" required />
               </div>
               <div class="form-group col-md-6">
                 <label for="bloodGroup">Blood Group *
@@ -80,7 +80,7 @@
                 <td>{{bloodRequest?.addressId.province}}</td>
                 <td>{{bloodRequest?.addressId.district}}</td>
                 <td>{{bloodRequest?.bloodGroup}}</td>
-                <td>{{bloodRequest?.date | date: 'yyyy-MM-dd'}}</td>
+                <td>{{bloodRequest?.date | date: 'yyyy-MM-dd hh:mm aa'}}</td>
                 <td>
                   <span class="badge badge-{{bloodRequest?.status=='PENDING'?'warning':'success'}}">{{bloodRequest?.status}} </span>
                 </td>

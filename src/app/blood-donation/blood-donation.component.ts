@@ -83,6 +83,7 @@ export class BloodDonationComponent implements OnInit {
         this.donationForm.reset();
         this.donationForm.markAsUntouched();
         this.donorDetail = null;
+        this.getBloodDonations();
       }else{
         Swal.fire('Sorry', response.message, 'error');
       }

@@ -30,4 +30,22 @@ export class AuthService {
   private getToken() {
     return localStorage.getItem('token');
   }
+
+  /**
+   * check if user is authenticated
+   */
+  isUserAuthenticated() {
+    const token = localStorage.getItem('token');
+    if(token) return true;
+    else return false;
+  }
+
+  /**
+   * check if user is admin
+   */
+  isUserAdmin() {
+    const role = localStorage.getItem('role');
+    if(role == 'ADMIN') return true;
+    else return false;
+  }
 }
