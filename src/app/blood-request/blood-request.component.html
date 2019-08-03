@@ -1,0 +1,94 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
+      <div class="card my-1">
+        <div class="card-body">
+          <form [formGroup]="requestForm" (submit)="requestBlood()">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="province">Province *
+                  <span class="error" *ngIf="form.province.invalid && form.province.dirty">
+                    province required
+                  </span>
+                </label>
+                <select id="province" class="form-control" formControlName="province"
+                  (change)="fetchDistricts(form.province.value)" required>
+                  <option value="">--select--</option>
+                  <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="district">District *
+                  <span class="error" *ngIf="form.addressId.invalid && form.addressId.dirty">
+                    district required
+                  </span>
+                </label>
+                <select id="district" class="form-control" formControlName="addressId" required>
+                  <option value="">--select--</option>
+                  <option *ngFor="let item of districts" value="{{item?._id}}">{{item?.district}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="date">Date of blood needed *
+                  <span class="error" *ngIf="form.date.invalid && form.date.dirty">
+                    date required
+                  </span>
+                </label>
+                <input type="date" formControlName="date" id="date" class="form-control" required />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="bloodGroup">Blood Group *
+                  <span class="error" *ngIf="form.bloodGroup.invalid && form.bloodGroup.dirty">
+                    blood group required
+                  </span></label>
+                <select formControlName="bloodGroup" id="bloodGroup" class="form-control" required>
+                  <option value="">--select--</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Request Blood</button>
+          </form>
+          <hr>
+          <h3 class="my-2">Blood Request List</h3>
+          <table class="table table-striped table-hover my-2" *ngIf="bloodRequests">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Province</th>
+                <th scope="col">District</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Blood Required Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bloodRequest of bloodRequests; let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{bloodRequest?.addressId.province}}</td>
+                <td>{{bloodRequest?.addressId.district}}</td>
+                <td>{{bloodRequest?.bloodGroup}}</td>
+                <td>{{bloodRequest?.date | date: 'yyyy-MM-dd'}}</td>
+                <td>
+                  <span class="badge badge-{{bloodRequest?.status=='PENDING'?'warning':'success'}}">{{bloodRequest?.status}} </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

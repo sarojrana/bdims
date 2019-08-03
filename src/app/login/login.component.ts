@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(response => {
       if(response.status){
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('role', response.data.role);
+        localStorage.setItem('role', response.data.user.role);
         swal.fire('Success', response.message, 'success');
-        if(response.data.role == 'ADMIN') {
+        if(response.data.user.role == 'ADMIN') {
           this.router.navigate(['/user-list']);
         } else {
           this.router.navigate(['/dashboard']);

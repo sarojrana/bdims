@@ -17,6 +17,12 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AddressService } from './services/address.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BloodRequestComponent } from './blood-request/blood-request.component';
+import { BloodDonationComponent } from './blood-donation/blood-donation.component';
+import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ import { AddressService } from './services/address.service';
     UserRegisterComponent,
     UserEditComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    HeaderComponent,
+    NavbarComponent,
+    BloodRequestComponent,
+    BloodDonationComponent,
+    ManageBloodRequestComponent
   ],
   imports: [
     BrowserModule,

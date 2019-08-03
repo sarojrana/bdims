@@ -1,64 +1,75 @@
-<div class="container">
-  <div class="card m-3 p-2 text-center">
-    <h3>
-      USER LIST
-    </h3>
-  </div>
-  <div class="card p-4">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="gender">Gender</label>
-        <select id="gender" class="form-control" name="gender" [(ngModel)]="searchParams.gender">
-          <option value="">--select--</option>
-          <option value="MALE">MALE</option>
-          <option value="FEMALE">FEMALE</option>
-          <option value="OTHER">OTHER</option>
-        </select> 
-      </div>
-      <div class="col-md-3">
-        <label for="status">Status</label>
-        <select name="status" id="status" class="form-control" [(ngModel)]="searchParams.status">
-          <option value="">--select--</option>
-          <option value="APPROVED">APPROVED</option>
-          <option value="PENDING">PENDING</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <button (click)="getUserList(searchParams)">Search</button>
-        <button (click)="getUserList(); clearParams();">Clear</button>
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="container my-1">
+  <div class="row">
+    <div class="col-lg-9 col-sm-12 col-md-12 mx-auto">
+      <div class="card p-4">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="gender">Gender</label>
+            <select id="gender" class="form-control" name="gender" [(ngModel)]="searchParams.gender">
+              <option value="">--select--</option>
+              <option value="MALE">MALE</option>
+              <option value="FEMALE">FEMALE</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="status">Status</label>
+            <select name="status" id="status" class="form-control" [(ngModel)]="searchParams.status">
+              <option value="">--select--</option>
+              <option value="APPROVED">APPROVED</option>
+              <option value="PENDING">PENDING</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <button (click)="getUserList(searchParams)">Search</button>
+            <button (click)="getUserList(); clearParams();">Clear</button>
+          </div>
+        </div>
+        <hr>
+        <table class="table table-striped table-hover" *ngIf="users">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Document Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+              <th scope="col">Blood Group</th>
+              <th scope="col">Address</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>
+                <a [href]="user?.docImage" target="_blank">
+                  <img [src]="user.docImage" alt="pic" height="30px" width="30px">
+                </a>
+              </td>
+              <td>{{user?.firstName}} {{user?.lastName}}</td>
+              <td>{{user?.gender}}</td>
+              <td>{{user?.age}}</td>
+              <td>{{user?.bloodGroup}}</td>
+              <td>{{user?.addressId.province}}, {{user?.addressId.district}}</td>
+              <td>{{user?.role}}</td>
+              <td>
+                <span class="badge badge-{{user?.status=='PENDING'?'warning':'success'}}">
+                  {{user?.status}}
+                </span>
+              </td>
+              <td>
+                <a class="btn btn-success btn-sm" *ngIf="user?.status == 'PENDING'"
+                  (click)="approveUser(user?._id)">Approve</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
-  <div class="card p-4">
-    <table class="table table-striped table-hover" *ngIf="users">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Document Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Role</th>
-          <th scope="col">Status</th>
-          <th scope="col">Blood Group</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users; let i=index">
-          <th scope="row">{{i+1}}</th>
-          <td>
-            <img [src]="user.docImage" alt="pic" height="30px" width="30px">
-          </td>
-          <td>{{user?.firstName}} {{user?.lastName}}</td>
-          <td>{{user?.gender}}</td>
-          <td>{{user?.role}}</td>
-          <td>{{user?.status}}</td>
-          <td>{{user?.bloodGroup}}</td>
-          <td>
-            <a class="btn btn-success btn-sm" *ngIf="user?.status == 'PENDING'" (click)="approveUser(user?._id)">Approve</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>    
   </div>
 </div>

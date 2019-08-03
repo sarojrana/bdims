@@ -24,7 +24,7 @@ export class AuthService {
    * logout current user
    */
   logout(){
-    return this.http.post(this.apiUrl + 'logout', { }, { headers: { token: this.getToken() }});
+    return this.http.post<any>(this.apiUrl + 'logout', { }, { headers: { token: this.getToken() }});
   }
 
   private getToken() {

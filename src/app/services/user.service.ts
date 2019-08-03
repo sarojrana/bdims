@@ -53,4 +53,49 @@ export class UserService {
   approveUser(id){
     return this.http.post<any>(this.apiUrl + '/approveUser/' + id, {});
   }
+
+  /**
+   * create blood request
+   * @param data 
+   */
+  createBloodRequest(data) {
+    return this.http.post<any>(config.serverApiUrl + 'users/bloodRequest', data);
+  }
+
+  /**
+   * get list of blood request
+   */
+  getBloodRequests() {
+    return this.http.get<any>(config.serverApiUrl + 'users/bloodRequests');
+  }
+  
+  /**
+   * add blood donation
+   * @param data 
+   */
+  addBloodDonation(data) {
+    return this.http.post<any>(this.apiUrl + 'bloodDonation', data);
+  }
+
+  /**
+   * get list of blood donations
+   */
+  getBloodDonations() {
+    return this.http.get<any>(this.apiUrl + 'donationList');
+  }
+
+  /**
+   * get list of blood request for admin
+   */
+  getBloodRequesList() {
+    return this.http.get<any>(this.apiUrl + 'bloodRequests');
+  }
+
+  /**
+   * approve blood request
+   * @param id 
+   */
+  approveBloodRequest(id) {
+    return this.http.post<any>(this.apiUrl + '/approveBloodRequest/' + id, {});
+  }
 }
