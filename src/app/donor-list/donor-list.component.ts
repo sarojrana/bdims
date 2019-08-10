@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-donor-list',
@@ -10,6 +11,8 @@ export class DonorListComponent implements OnInit {
 
   donors = [];
   donorDetail: any;
+  provinces = [];
+  districts = [];
   bloodGroups = [
     { title: 'A+', value: 'Ap' },
     { title: 'A-', value: 'An' },
@@ -28,11 +31,13 @@ export class DonorListComponent implements OnInit {
   };
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private addressService: AddressService
   ) { }
 
   ngOnInit() {
     this.getDonorList();
+    this.fetchProvince();
   }
 
   /**
@@ -56,5 +61,18 @@ export class DonorListComponent implements OnInit {
       province: '',
       district: ''
     }
+  }
+
+  fetchProvince() {
+    this.addressService.getProvinces().subscribe(response => {
+      this.provinces = response.data;
+      this.fetchDistricts(this.provinces[0]);
+    })
+  }
+
+  fetchDistricts(province) {
+    this.addressService.getProvinceWiseDistricts(province).subscribe(response => {
+      this.districts = response.data;
+    })
   }
 }

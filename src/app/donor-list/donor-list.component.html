@@ -22,6 +22,21 @@
             </select>
           </div>
           <div class="col-md-3">
+            <label for="gender">Province</label>
+            <select id="gender" class="form-control" name="gender" [(ngModel)]="searchParams.province"
+            (change)="fetchDistricts(searchParams.province)">
+              <option value="">--select--</option>
+              <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="gender">District</label>
+            <select id="gender" class="form-control" name="gender" [(ngModel)]="searchParams.district">
+              <option value="">--select--</option>
+              <option *ngFor="let item of districts" value="{{item?.district}}">{{item?.district}}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
             <button (click)="getDonorList(searchParams)">Search</button>
             <button (click)="getDonorList(); clearParams();">Clear</button>
           </div>
