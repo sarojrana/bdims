@@ -47,14 +47,14 @@ export class RegisterComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z][a-zA-Z\\s]+$')]],
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z][a-zA-Z\\s]+$')]],
       email: ['', Validators.required],
+      bloodGroup: ['', Validators.required],
       password: ['', Validators.required],
       mobile: ['', Validators.required],
       gender: ['', Validators.required],
-      dob: ['', Validators.required],
-      bloodGroup: ['', Validators.required],
-      addressId: ['', Validators.required],
-      province: ['', Validators.required],
-      role: ['', Validators.required]
+      dob: [''],
+      district: [''],
+      province: [''],
+      role: ['MEMBER']
     })
   }
 
@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
    */
   register(){
     if(this.userForm.invalid){
+      console.log(this.userForm);
       return;
     }
     const formData: FormData = this.prepareFormData();
@@ -105,7 +106,8 @@ export class RegisterComponent implements OnInit {
     formData.append('email', this.userForm.value.email);
     formData.append('gender', this.userForm.value.gender);
     formData.append('password', this.userForm.value.password);
-    formData.append('addressId', this.userForm.value.addressId);
+    formData.append('province', this.userForm.value.province);
+    formData.append('district', this.userForm.value.district);
     formData.append('mobile', this.userForm.value.mobile);
     formData.append('dob', this.userForm.value.dob);
     formData.append('bloodGroup', this.userForm.value.bloodGroup);

@@ -23,3 +23,36 @@
 .card {
   min-height: 400px;
 }
+
+.profile label {
+  color: #666;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0 !important;
+}
+
+.profile span {
+  font-weight: bold;
+}
+
+.profile div {
+  padding-bottom: 0.5em; 
+}
+
+.fa{
+  margin-right: 0.5em;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+.edit-btn {
+  float: right;
+}
+
+.my-profile {
+  font-weight: bold;
+  color: #666;
+  font-size: 20px;
+}

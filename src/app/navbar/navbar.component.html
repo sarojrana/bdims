@@ -4,11 +4,14 @@
       <div class="card">
         <div class="card-body">
           <ul class="nav nav-tabs">
-            <li class="nav-item" *ngIf="!auth.isUserAdmin()">
+            <li class="nav-item">
               <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/blood-request']" routerLinkActive="active">Blood Request</a>
+            </li>
+            <li class="nav-item" *ngIf="!auth.isUserAdmin()">
+              <a class="nav-link" [routerLink]="['/donor-list']" routerLinkActive="active">Donor List</a>
             </li>
             <li class="nav-item" *ngIf="auth.isUserAdmin()">
               <a class="nav-link" [routerLink]="['/user-list']" routerLinkActive="active">User List</a>

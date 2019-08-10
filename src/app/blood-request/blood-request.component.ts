@@ -47,7 +47,7 @@ export class BloodRequestComponent implements OnInit {
     this.requestForm = this.fb.group({
       date: ['', Validators.required],
       bloodGroup: ['', Validators.required],
-      addressId: ['', Validators.required],
+      district: ['', Validators.required],
       province: ['', Validators.required],
     })
   }

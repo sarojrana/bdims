@@ -105,4 +105,19 @@ export class UserService {
   getStatistics() {
     return this.http.get<any>(config.serverApiUrl + 'users/statistics');
   }
+
+  /**
+   * get profile of logged in user
+   */
+  getProfile() {
+    return this.http.get<any>(config.serverApiUrl + 'users/profile');
+  }
+
+  /**
+   * get donor list
+   * @param queryParams 
+   */
+  getDonorList(queryParams: any = {}) {
+    return this.http.get<any>(config.serverApiUrl + 'users/donors', { params: queryParams});
+  }
 }

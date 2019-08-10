@@ -6,6 +6,46 @@
     <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
       <div class="card my-1">
         <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <label class="my-profile">Profile</label>
+              <a title="Under Construction ..." [routerLink]="['/dashboard']" class="btn btn-sm edit-btn">
+                <i class="fa fa-pencil-alt"></i>Edit
+              </a>
+            </div>
+          </div>
+          <hr>
+          <div class="row pt-2 pb-2 profile" *ngIf="user">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Name </label> <span> {{user?.firstName}} {{user?.lastName}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Email </label> <span> {{user?.email}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Mobile </label> <span> {{user?.mobile}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Gender </label> <span> {{user?.gender || 'n/a'}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Blood Group </label> <span> {{user?.bloodGroup}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Age </label> <span> {{user?.age || 'n/a'}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Address </label> 
+              <span> {{user.province?user.province + ',':''}} {{user?.district || 'n/a'}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Role </label> <span> {{user?.role || 'n/a'}} </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <label> Status </label> <span> {{user?.status || 'n/a'}} </span>
+            </div>
+          </div>
+          <hr>
           <h4 *ngIf="!stats"> Statistics will be available soon...</h4>
           <div class="row" *ngIf="stats">
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">

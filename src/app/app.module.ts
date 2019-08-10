@@ -24,6 +24,7 @@ import { BloodRequestComponent } from './blood-request/blood-request.component';
 import { BloodDonationComponent } from './blood-donation/blood-donation.component';
 import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
 import { AuthGuard, AdminGuard } from './auth-guard';
+import { DonorListComponent } from './donor-list/donor-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthGuard, AdminGuard } from './auth-guard';
     NavbarComponent,
     BloodRequestComponent,
     BloodDonationComponent,
-    ManageBloodRequestComponent
+    ManageBloodRequestComponent,
+    DonorListComponent
   ],
   imports: [
     BrowserModule,

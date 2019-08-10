@@ -22,45 +22,37 @@
             </select>
           </div>
           <div class="col-md-3">
-            <button (click)="getUserList(searchParams)">Search</button>
-            <button (click)="getUserList(); clearParams();">Clear</button>
+            <button (click)="getDonorList(searchParams)">Search</button>
+            <button (click)="getDonorList(); clearParams();">Clear</button>
           </div>
         </div>
         <hr>
         <div class="row">
           <div class="col-12">
-            <table class="table table-striped table-hover" *ngIf="users">
+            <table class="table table-striped table-hover" *ngIf="donors">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Document Image</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Donor</th>
                   <th scope="col">Gender</th>
                   <th scope="col">Age</th>
                   <th scope="col">Blood Group</th>
                   <th scope="col">Address</th>
-                  <th scope="col">Role</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of users; let i=index" data-toggle="modal" data-target="#userDetail"
-                (click)="userDetail = user;">
+                <tr *ngFor="let donor of donors; let i=index" data-toggle="modal" data-target="#donorDetail"
+                  (click)="donorDetail = donor;">
                   <th scope="row">{{i+1}}</th>
+                  <td>{{donor?.firstName}} {{donor?.lastName}}</td>
+                  <td>{{donor?.gender}}</td>
+                  <td>{{donor?.age || '-'}}</td>
+                  <td>{{donor?.bloodGroup}}</td>
+                  <td>{{donor?.province?donor.province + ',':''}} {{donor?.district || '-'}}</td>
                   <td>
-                    <a>
-                      <img [src]="user.docImage" alt="pic" height="30px" width="30px">
-                    </a>
-                  </td>
-                  <td>{{user?.firstName}} {{user?.lastName}}</td>
-                  <td>{{user?.gender}}</td>
-                  <td>{{user?.age || '-'}}</td>
-                  <td>{{user?.bloodGroup}}</td>
-                  <td>{{user?.province?user.province + ',':''}} {{user?.district || '-'}}</td>
-                  <td>{{user?.role}}</td>
-                  <td>
-                    <span class="badge badge-{{user?.status=='ACTIVE'?'success':'warning'}}">
-                      {{user?.status=='ACTIVE'?user.status:'AWAY'}}
+                    <span class="badge badge-{{donor?.status=='ACTIVE'?'success':'warning'}}">
+                      {{donor?.status=='ACTIVE'?donor.status:'AWAY'}}
                     </span>
                   </td>
                 </tr>
@@ -74,60 +66,54 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="userDetail" tabindex="-1" role="dialog" aria-labelledby="userDetailTitle"
-  aria-hidden="true">
+<div class="modal fade" id="donorDetail" tabindex="-1" role="dialog" aria-labelledby="donorDetailTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">User Profile</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Donor Profile</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="row user">
+        <div class="row donor">
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">First Name</label>
-            <span>{{userDetail?.firstName}}</span>
+            <span>{{donorDetail?.firstName}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Last Name</label>
-            <span>{{userDetail?.lastName}}</span>
+            <span>{{donorDetail?.lastName}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Mobile</label>
-            <span>{{userDetail?.mobile}}</span>
+            <span>{{donorDetail?.mobile}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Email</label>
-            <span>{{userDetail?.email}}</span>
+            <span>{{donorDetail?.email}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Blood Group</label>
-            <span>{{userDetail?.bloodGroup}}</span>
+            <span>{{donorDetail?.bloodGroup}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Age</label>
-            <span>{{userDetail?.age || '-'}}</span>
-          </div>
-          
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <label class="title">Province</label>
-            <span>{{userDetail?.province || '-'}}</span>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <label class="title">District</label>
-            <span>{{userDetail?.district || '-'}}</span>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <label class="title">Role</label>
-            <span>{{userDetail?.role}}</span>
+            <span>{{donorDetail?.age || '-'}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Status</label>
-            <span class="badge badge-{{userDetail?.status=='ACTIVE'?'success':'warning'}}">
-              {{userDetail?.status=='ACTIVE'?userDetail.status:'AWAY'}}
+            <span class="badge badge-{{donorDetail?.status=='ACTIVE'?'success':'warning'}}">
+              {{donorDetail?.status=='ACTIVE'?donorDetail.status:'AWAY'}}
             </span>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <label class="title">Province</label>
+            <span>{{donorDetail?.province || '-'}}</span>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <label class="title">District</label>
+            <span>{{donorDetail?.district || '-'}}</span>
           </div>
         </div>
       </div>

@@ -2,17 +2,17 @@ tr {
   cursor: pointer;
 }
 
-.user label {
+.donor label {
   color: #666;
   font-weight: bold;
   display: block;
   margin-bottom: 0 !important;  
 }
 
-.user span {
+.donor span {
   font-weight: bold;
 }
 
-.user div {
+.donor div {
   padding-bottom: 0.5em;
 }

@@ -10,8 +10,19 @@ import Swal from 'sweetalert2';
 export class UserListComponent implements OnInit {
 
   users = [];
+  userDetail: any;
+  bloodGroups = [
+    { title: 'A+', value: 'Ap' },
+    { title: 'A-', value: 'An' },
+    { title: 'B+', value: 'Bp' },
+    { title: 'B-', value: 'Bn' },
+    { title: 'O+', value: 'Op' },
+    { title: 'O-', value: 'On' },
+    { title: 'AB+', value: 'ABp'},
+    { title: 'AB-', value: 'ABn'}
+  ];
   searchParams = {
-    status: '',
+    bloodGroup: '',
     gender: '',
   };
 
@@ -56,7 +67,7 @@ export class UserListComponent implements OnInit {
    */
   clearParams(){
     this.searchParams = {
-      status: '',
+      bloodGroup: '',
       gender: '',
     }
   }

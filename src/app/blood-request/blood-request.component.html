@@ -22,13 +22,13 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="district">District *
-                  <span class="error" *ngIf="form.addressId.invalid && form.addressId.dirty">
+                  <span class="error" *ngIf="form.district.invalid && form.district.dirty">
                     district required
                   </span>
                 </label>
-                <select id="district" class="form-control" formControlName="addressId" required>
+                <select id="district" class="form-control" formControlName="district" required>
                   <option value="">--select--</option>
-                  <option *ngFor="let item of districts" value="{{item?._id}}">{{item?.district}}</option>
+                  <option *ngFor="let item of districts" value="{{item?.district}}">{{item?.district}}</option>
                 </select>
               </div>
             </div>

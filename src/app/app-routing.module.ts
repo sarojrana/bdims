@@ -11,12 +11,14 @@ import { BloodRequestComponent } from './blood-request/blood-request.component';
 import { BloodDonationComponent } from './blood-donation/blood-donation.component';
 import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
 import { AuthGuard, AdminGuard } from './auth-guard';
+import { DonorListComponent } from './donor-list/donor-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'registration', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'donor-list', component: DonorListComponent, canActivate: [AuthGuard] },
   { path: 'blood-request', component: BloodRequestComponent, canActivate: [AuthGuard] },
   { path: 'blood-donation', component: BloodDonationComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, AdminGuard] },

@@ -57,7 +57,7 @@
               <tr *ngFor="let donation of bloodDonations; let i=index">
                 <th scope="row">{{i+1}}</th>
                 <td>{{donation?.userId.firstName}} {{donation?.userId.lastName}}</td>
-                <td>{{donation?.userId?.addressId?.province || '-'}}, {{donation?.userId?.addressId?.district}}</td>
+                <td>{{donation?.userId?.addressId?.province || '-'}} {{donation?.userId?.addressId?.district}}</td>
                 <td>{{donation?.userId.gender}}</td>
                 <td>{{donation?.userId.bloodGroup}}</td>
                 <td>{{donation?.userId.age || '-'}}</td>

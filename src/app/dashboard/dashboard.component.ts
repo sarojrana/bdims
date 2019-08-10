@@ -9,12 +9,14 @@ import { UserService } from '../services/user.service';
 export class DashboardComponent implements OnInit {
 
   stats: any;
+  user: any;
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.getProfile();
     this.userService.getStatistics().subscribe((response) => {
       if(response.status) {
         this.stats = response.data;
@@ -22,4 +24,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  /**
+   * get profile details
+   */
+  getProfile() {
+    this.userService.getProfile().subscribe((response) => {
+      if(response.status) {
+        this.user = response.data;
+      }
+    })
+  }
 }
