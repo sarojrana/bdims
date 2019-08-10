@@ -49,8 +49,8 @@ export class UserListComponent implements OnInit {
    * delete user
    * @param id
    */
-  approveUser(id){
-    this.userService.approveUser(id).subscribe(response => {
+  deleteUser(id){
+    this.userService.deleteUser(id).subscribe(response => {
       if(response.status){
         Swal.fire('Success', response.message, 'success');
         this.getUserList();

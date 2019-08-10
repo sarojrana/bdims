@@ -50,8 +50,8 @@ export class UserService {
    * delete user
    * @param id
    */
-  approveUser(id){
-    return this.http.post<any>(this.apiUrl + '/approveUser/' + id, {});
+  deleteUser(id){
+    return this.http.delete<any>(this.apiUrl + '/delete/' + id);
   }
 
   /**

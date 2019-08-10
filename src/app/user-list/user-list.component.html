@@ -41,6 +41,7 @@
                   <th scope="col">Address</th>
                   <th scope="col">Role</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,6 +63,11 @@
                     <span class="badge badge-{{user?.status=='ACTIVE'?'success':'warning'}}">
                       {{user?.status=='ACTIVE'?user.status:'AWAY'}}
                     </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm" (click)="$event.stopPropagation();deleteUser(user?.id)">
+                      <i class="fa fa-trash-alt"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
