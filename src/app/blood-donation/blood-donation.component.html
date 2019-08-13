@@ -35,7 +35,7 @@
           <hr>
           <div *ngIf="donorDetail">
             <b>Donor: </b> {{donorDetail?.firstName}} {{donorDetail?.lastName}}<br>
-            <b>Address: </b> {{donorDetail?.addressId.province}}, {{donorDetail?.addressId.district}}<br>
+            <b>Address: </b> {{donorDetail?.province}}, {{donorDetail?.district}}<br>
             <b>Blood Group: </b> {{donorDetail?.bloodGroup}}<br>
             <b>Gender: </b> {{donorDetail?.gender}}<br>
             <b>DOB: </b> {{donorDetail?.dob | date: 'yyyy-MM-dd'}}<br>
@@ -51,17 +51,23 @@
                 <th scope="col">Blood Group</th>
                 <th scope="col">Age</th>
                 <th scope="col">Date of Donation</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let donation of bloodDonations; let i=index">
                 <th scope="row">{{i+1}}</th>
-                <td>{{donation?.userId.firstName}} {{donation?.userId.lastName}}</td>
-                <td>{{donation?.userId?.addressId?.province || '-'}} {{donation?.userId?.addressId?.district}}</td>
-                <td>{{donation?.userId.gender}}</td>
-                <td>{{donation?.userId.bloodGroup}}</td>
-                <td>{{donation?.userId.age || '-'}}</td>
+                <td>{{donation?.userId?.firstName}} {{donation?.userId?.lastName}}</td>
+                <td>{{donation?.userId?.province || '-'}} {{donation?.userId?.district}}</td>
+                <td>{{donation?.userId?.gender}}</td>
+                <td>{{donation?.userId?.bloodGroup}}</td>
+                <td>{{donation?.userId?.age || '-'}}</td>
                 <td>{{donation?.date | date: 'yyyy-MM-dd'}}</td>
+                <td>
+                  <button class="btn btn-sm" (click)="deleteDonation(donation?._id)">
+                    <i class="fa fa-trash-alt"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>   

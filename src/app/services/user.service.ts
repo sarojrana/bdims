@@ -85,6 +85,14 @@ export class UserService {
   }
 
   /**
+   * delete blood donation
+   * @param id 
+   */
+  deleteBloodDonation(id) {
+    return this.http.delete<any>(this.apiUrl + 'deleteDonation/' + id);
+  }
+
+  /**
    * get list of blood request for admin
    */
   getBloodRequesList() {
@@ -96,7 +104,15 @@ export class UserService {
    * @param id 
    */
   approveBloodRequest(id) {
-    return this.http.post<any>(this.apiUrl + '/approveBloodRequest/' + id, {});
+    return this.http.post<any>(this.apiUrl + 'approveBloodRequest/' + id, {});
+  }
+
+  /**
+   * delete blood request
+   * @param id 
+   */
+  deleteBloodRequest(id) {
+    return this.http.delete<any>(this.apiUrl + 'deleteBloodRequest/' + id);
   }
 
   /**

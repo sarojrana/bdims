@@ -91,4 +91,21 @@ export class BloodDonationComponent implements OnInit {
       Swal.fire('Sorry', error.error.message, 'error');
     });
   }
+
+  /**
+   * delete blood donation
+   * @param id 
+   */
+  deleteDonation(id) {
+    this.userService.deleteBloodDonation(id).subscribe(response => {
+      if(response.status){
+        Swal.fire('Success', response.message, 'success');
+        this.getBloodDonations();
+      }else{
+        Swal.fire('Sorry', response.message, 'error');
+      }
+    }, (error) => {
+      Swal.fire('Sorry', error.error.message, 'error');
+    });
+  }
 }

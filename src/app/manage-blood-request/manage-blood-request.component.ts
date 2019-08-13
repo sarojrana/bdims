@@ -43,4 +43,17 @@ export class ManageBloodRequestComponent implements OnInit {
     })
   }
 
+  deleteBloodRequest(id) {
+    this.userService.deleteBloodRequest(id).subscribe(response => {
+      if(response.status){
+        Swal.fire('Success', response.message, 'success');
+        this.getBloodRequestList();
+      }else{
+        Swal.fire('Sorry', response.message, 'error');
+      }
+    }, (error) => {
+      Swal.fire('Sorry', error.error.message, 'error');
+    })
+  }
+
 }

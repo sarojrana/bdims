@@ -20,7 +20,7 @@
           <tbody>
             <tr *ngFor="let bloodRequest of bloodRequests; let i=index">
               <th scope="row">{{i+1}}</th>
-              <td>{{bloodRequest?.addressId.province}}, {{bloodRequest?.addressId.district}}</td>
+              <td>{{bloodRequest?.province}}, {{bloodRequest?.district}}</td>
               <td>{{bloodRequest?.bloodGroup}}</td>
               <td>{{bloodRequest?.date | date: 'yyyy-MM-dd hh:mm aa'}}</td>
               <td>
@@ -33,8 +33,9 @@
                 </span>
               </td>
               <td>
-                <a class="btn btn-success btn-sm" *ngIf="bloodRequest?.status == 'PENDING'"
-                  (click)="approveBloodRequest(bloodRequest?._id)">Approve</a>
+                <button class="btn btn-sm" (click)="deleteBloodRequest(bloodRequest?._id)">
+                  <i class="fa fa-trash-alt"></i>
+                </button>
               </td>
             </tr>
           </tbody>

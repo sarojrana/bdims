@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
       formData.append('image', this.file, this.file.name);
     }
     formData.append('firstName', this.userForm.value.firstName);
-    formData.append('lastName', this.userForm.value.firstName);
+    formData.append('lastName', this.userForm.value.lastName);
     formData.append('role', this.userForm.value.role);
     formData.append('email', this.userForm.value.email);
     formData.append('gender', this.userForm.value.gender);
