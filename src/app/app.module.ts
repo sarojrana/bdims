@@ -25,6 +25,8 @@ import { BloodDonationComponent } from './blood-donation/blood-donation.componen
 import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
 import { AuthGuard, AdminGuard } from './auth-guard';
 import { DonorListComponent } from './donor-list/donor-list.component';
+import { PlaceService } from './services/place.service';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { DonorListComponent } from './donor-list/donor-list.component';
     BloodRequestComponent,
     BloodDonationComponent,
     ManageBloodRequestComponent,
-    DonorListComponent
+    DonorListComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { DonorListComponent } from './donor-list/donor-list.component';
     AdminGuard,
     AuthService,
     UserService,
+    PlaceService,
     AddressService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],

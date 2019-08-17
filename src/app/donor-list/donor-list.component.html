@@ -53,6 +53,7 @@
                   <th scope="col">Age</th>
                   <th scope="col">Blood Group</th>
                   <th scope="col">Address</th>
+                  <th scope="col">Distance/Time</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
@@ -65,6 +66,7 @@
                   <td>{{donor?.age || '-'}}</td>
                   <td>{{donor?.bloodGroup}}</td>
                   <td>{{donor?.province?donor.province + ',':''}} {{donor?.district || '-'}}</td>
+                  <td>{{donor?.distance + ' km '}}/{{donor?.time + ' min'}}</td>
                   <td>
                     <span class="badge badge-{{donor?.status=='ACTIVE'?'success':'warning'}}">
                       {{donor?.status=='ACTIVE'?donor.status:'AWAY'}}
@@ -117,18 +119,22 @@
             <span>{{donorDetail?.age || '-'}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
-            <label class="title">Status</label>
-            <span class="badge badge-{{donorDetail?.status=='ACTIVE'?'success':'warning'}}">
-              {{donorDetail?.status=='ACTIVE'?donorDetail.status:'AWAY'}}
-            </span>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">Province</label>
             <span>{{donorDetail?.province || '-'}}</span>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <label class="title">District</label>
             <span>{{donorDetail?.district || '-'}}</span>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <label class="title">Distance/Time</label>
+            <span>{{donorDetail?.distance + ' km' || '-'}} / {{donorDetail?.time + ' minutes' || '-'}}</span>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <label class="title">Status</label>
+            <span class="badge badge-{{donorDetail?.status=='ACTIVE'?'success':'warning'}}">
+              {{donorDetail?.status=='ACTIVE'?donorDetail.status:'AWAY'}}
+            </span>
           </div>
         </div>
       </div>

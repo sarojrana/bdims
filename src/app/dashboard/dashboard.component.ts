@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
 
   stats: any;
   user: any;
+  addressStatus: boolean = true;
 
   constructor(
     private userService: UserService
@@ -17,11 +18,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getProfile();
-    this.userService.getStatistics().subscribe((response) => {
-      if(response.status) {
-        this.stats = response.data;
-      }
-    });
+    this.getStatistics();
+    this.getAddressStatus();
   }
 
   /**
@@ -31,6 +29,30 @@ export class DashboardComponent implements OnInit {
     this.userService.getProfile().subscribe((response) => {
       if(response.status) {
         this.user = response.data;
+      }
+    })
+  }
+
+  /**
+   * get statistics
+   */
+  getStatistics() {
+    this.userService.getStatistics().subscribe((response) => {
+      if(response.status) {
+        this.stats = response.data;
+      }
+    });
+  }
+
+  /**
+   * get address status
+   */
+  getAddressStatus() {
+    this.userService.checkAddressStatus().subscribe(response => {
+      if(response.status && response.data == 'COMPLETE') {
+        this.addressStatus = true;
+      } else {
+        this.addressStatus = false;
       }
     })
   }

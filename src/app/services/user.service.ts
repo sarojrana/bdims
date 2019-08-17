@@ -47,11 +47,26 @@ export class UserService {
   }
 
   /**
+   * get address completion status
+   */
+  checkAddressStatus() {
+    return this.http.get<any>(`${config.serverApiUrl}users/addressStatus`);
+  }
+
+  /**
+   * update user address
+   * @param address 
+   */
+  updateAddress(address) {
+    return this.http.post<any>(`${config.serverApiUrl}users/updateUserLocation`, address);
+  }
+
+  /**
    * delete user
    * @param id
    */
   deleteUser(id){
-    return this.http.delete<any>(this.apiUrl + '/delete/' + id);
+    return this.http.delete<any>(this.apiUrl + 'delete/' + id);
   }
 
   /**
@@ -135,5 +150,13 @@ export class UserService {
    */
   getDonorList(queryParams: any = {}) {
     return this.http.get<any>(config.serverApiUrl + 'users/donors', { params: queryParams});
+  }
+
+  /**
+   * get place suggestions
+   * @param search 
+   */
+  getPlaceSuggestions(search) {
+    return this.http.get<any>(`${config.serverApiUrl}users/placesAutocomplete`, { params: { search }});
   }
 }

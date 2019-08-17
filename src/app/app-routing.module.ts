@@ -12,6 +12,7 @@ import { BloodDonationComponent } from './blood-donation/blood-donation.componen
 import { ManageBloodRequestComponent } from './manage-blood-request/manage-blood-request.component';
 import { AuthGuard, AdminGuard } from './auth-guard';
 import { DonorListComponent } from './donor-list/donor-list.component';
+import { AddressComponent } from './address/address.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'donor-list', component: DonorListComponent, canActivate: [AuthGuard] },
+  { path: 'address-update', component: AddressComponent, canActivate: [AuthGuard] },
   { path: 'blood-request', component: BloodRequestComponent, canActivate: [AuthGuard] },
   { path: 'blood-donation', component: BloodDonationComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, AdminGuard] },

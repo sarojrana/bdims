@@ -1,0 +1,15 @@
+ul.place-list {
+  border: 1px solid #ccc;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+ul.place-list li {
+  padding: 0.5em 1em; 
+}
+
+ul.place-list li:hover {
+  background: #007bff;
+  margin: 0 !important;
+  cursor: pointer;
+}

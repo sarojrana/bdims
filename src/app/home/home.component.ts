@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlaceService } from '../services/place.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private placeService: PlaceService
+  ) { }
 
   ngOnInit() {
+    this.placeService.getPlaceList('Kumari').subscribe(response => {
+      console.log(response);
+    });
   }
 
 }

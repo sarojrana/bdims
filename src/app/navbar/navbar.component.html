@@ -11,6 +11,9 @@
               <a class="nav-link" [routerLink]="['/blood-request']" routerLinkActive="active">Blood Request</a>
             </li>
             <li class="nav-item" *ngIf="!auth.isUserAdmin()">
+              <a class="nav-link" [routerLink]="['/address-update']" routerLinkActive="active">Update Address</a>
+            </li>
+            <li class="nav-item" *ngIf="!auth.isUserAdmin()">
               <a class="nav-link" [routerLink]="['/donor-list']" routerLinkActive="active">Donor List</a>
             </li>
             <li class="nav-item" *ngIf="auth.isUserAdmin()">
