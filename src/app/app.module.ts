@@ -27,6 +27,7 @@ import { AuthGuard, AdminGuard } from './auth-guard';
 import { DonorListComponent } from './donor-list/donor-list.component';
 import { PlaceService } from './services/place.service';
 import { AddressComponent } from './address/address.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AddressComponent } from './address/address.component';
     BloodDonationComponent,
     ManageBloodRequestComponent,
     DonorListComponent,
-    AddressComponent
+    AddressComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

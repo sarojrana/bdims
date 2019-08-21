@@ -159,4 +159,12 @@ export class UserService {
   getPlaceSuggestions(search) {
     return this.http.get<any>(`${config.serverApiUrl}users/placesAutocomplete`, { params: { search }});
   }
+
+  /**
+   * updates user profile
+   * @param data 
+   */
+  updateProfile(data) {
+    return this.http.post<any>(config.serverApiUrl + 'users/updateProfile', data);
+  }
 }

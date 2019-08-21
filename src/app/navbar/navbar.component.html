@@ -25,6 +25,9 @@
             <li class="nav-item" *ngIf="auth.isUserAdmin()">
               <a class="nav-link" [routerLink]="['/manage-blood-request']" routerLinkActive="active">Manage Blood Request</a>
             </li>
+            <li class="nav-item" *ngIf="!auth.isUserAdmin()">
+              <a class="nav-link" [routerLink]="['/profile-update']" routerLinkActive="active">Update Profile</a>
+            </li>
           </ul>
         </div>
       </div>
