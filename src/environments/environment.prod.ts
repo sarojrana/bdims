@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  serverUrl: 'https://sarojrana-mean.herokuapp.com',
-  serverApiUrl: 'https://sarojrana-mean.herokuapp.com/'
+  serverUrl: 'http://bdims.herokuapp.com',
+  serverApiUrl: 'http://bdims.herokuapp.com/'
 };
