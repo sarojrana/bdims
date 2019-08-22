@@ -9,13 +9,9 @@ import { PlaceService } from '../services/place.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private placeService: PlaceService
   ) { }
 
   ngOnInit() {
-    this.placeService.getPlaceList('Kumari').subscribe(response => {
-      console.log(response);
-    });
   }
 
 }
