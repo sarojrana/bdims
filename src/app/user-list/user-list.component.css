@@ -2,6 +2,12 @@ tr {
   cursor: pointer;
 }
 
+.status {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5em;
+}
+
 .user label {
   color: #666;
   font-weight: bold;

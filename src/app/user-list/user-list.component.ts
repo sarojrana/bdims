@@ -63,6 +63,23 @@ export class UserListComponent implements OnInit {
   }
 
   /**
+   * update user status
+   * @param id
+   */
+  updateUserStatus(id){
+    this.userService.updateUserStatus(id).subscribe(response => {
+      if(response.status){
+        Swal.fire('Success', response.message, 'success');
+        this.getUserList();
+      }else{
+        Swal.fire('Sorry', response.message, 'error');
+      }
+    }, (error) => {
+      Swal.fire('Sorry', error.error.message, 'error');
+    })
+  }
+
+  /**
    * reset search Params
    */
   clearParams(){

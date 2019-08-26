@@ -167,4 +167,12 @@ export class UserService {
   updateProfile(data) {
     return this.http.post<any>(config.serverApiUrl + 'users/updateProfile', data);
   }
+
+  /**
+   * updates user status
+   * @param id 
+   */
+  updateUserStatus(id) {
+    return this.http.post<any>(this.apiUrl + 'changeUserStatus/' + id, {});
+  }
 }

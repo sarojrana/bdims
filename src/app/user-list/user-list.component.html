@@ -59,10 +59,17 @@
                   <td>{{user?.bloodGroup}}</td>
                   <td>{{user?.province?user.province + ',':''}} {{user?.district || '-'}}</td>
                   <td>{{user?.role}}</td>
-                  <td>
-                    <span class="badge badge-{{user?.status=='ACTIVE'?'success':'warning'}}">
-                      {{user?.status=='ACTIVE'?user.status:'AWAY'}}
-                    </span>
+                  <td class="status">
+                    <div>
+                      <span class="badge badge-{{user?.status=='ACTIVE'?'success':'warning'}}">
+                        {{user?.status=='ACTIVE'?user.status:'INACTIVE'}}
+                      </span>
+                    </div>
+                    <div>
+                      <button class="btn btn-sm" (click)="$event.stopPropagation();updateUserStatus(user?.id)">
+                        <i class="fa fa-pencil-alt"></i>
+                      </button>
+                    </div>
                   </td>
                   <td>
                     <button class="btn btn-sm" (click)="$event.stopPropagation();deleteUser(user?.id)">
