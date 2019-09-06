@@ -66,9 +66,8 @@
                       </span>
                     </div>
                     <div>
-                      <button class="btn btn-sm" (click)="$event.stopPropagation();updateUserStatus(user?.id)">
-                        <i class="fa fa-pencil-alt"></i>
-                      </button>
+                      <i class="fa fa-pencil-alt"
+                      (click)="$event.stopPropagation();updateUserStatus(user?.id)"></i>
                     </div>
                   </td>
                   <td>

@@ -22,3 +22,11 @@ tr {
 .user div {
   padding-bottom: 0.5em;
 }
+
+th {
+  padding: 0.5rem;  
+}
+
+.fa-pencil-alt:hover {
+  color: blue;
+}
