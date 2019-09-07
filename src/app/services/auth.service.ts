@@ -48,4 +48,13 @@ export class AuthService {
     if(role == 'ADMIN') return true;
     else return false;
   }
+
+  /**
+   * check if user id verified
+   */
+  isUserVerified() {
+    const verified = localStorage.getItem('verified');
+    if(verified == 'true') return true;
+    return false;
+  }
 }

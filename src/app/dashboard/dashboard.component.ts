@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
   addressStatus: boolean = true;
 
   constructor(
+    public auth: AuthService,
     private userService: UserService
   ) { }
 

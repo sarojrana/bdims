@@ -6,10 +6,15 @@
     <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
       <div class="card my-1">
         <div class="card-body">
-          <div class="row" *ngIf="!addressStatus">
+          <div class="row" *ngIf="!addressStatus && !auth.isUserAdmin()">
             <div class="alert alert-danger address-status" role="alert">
               Please complete your address.
               <a class="btn btn-main" [routerLink]="['/address-update']">Complete Now!</a>
+            </div>
+          </div>
+          <div class="row" *ngIf="!auth.isUserVerified()">
+            <div class="alert alert-danger address-status" role="alert">
+              An email has been sent to your mail. Please click the link in your mail to verify your account.
             </div>
           </div>
           <div class="row">

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       if(response.status){
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('role', response.data.user.role);
+        localStorage.setItem('verified', response.data.user.verified || false);
         swal.fire('Success', response.message, 'success');
         if(response.data.user.role == 'ADMIN') {
           this.router.navigate(['/user-list']);
